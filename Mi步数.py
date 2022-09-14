@@ -18,9 +18,9 @@ if __name__ == '__main__':
     # 刷步数 API
     url = 'https://motion.faithxy.com/motion/api/motion/Xiaomi'
     # 账号
-    phone = '17531331461'
+    phone = '小米账号'
     # 密码
-    password = 'yly20040224'
+    password = '小米密码'
     # 步数
     size = '23000'
     # 调用函数
