@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        .box {
+            height: 300px;
+            width: 500px;
+            position: relative;
+            background-color: pink;
+            transition: all 0.3s;
+        }
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box span {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(211, 138, 43, 0.416);
+            width: 30px;
+            height: 50px;
+            transform: translateY(-50%);
+            line-height: 50px;
+            text-align: center;
+            color: aqua;
+        }
+        .box .left_but {
+            left: 0;
+        }
+        .box .right_but {
+            right: 0;
+        }
+        .box ul {
+            position: absolute;
+            bottom: 20px;
+        }
+        .box ul li {
+            height: 20px;
+            width: 20px;
+            background-color: #0f0;
+            float: left;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+        .box .bg {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li class="bg"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span class="left_but">&lt;</span>
+        <span class="right_but">&gt;</span>
+    </div>
+    <script>
+        let index = 0;
+        const arrbg = ['pink','green','blue','red']
+        const box = document.querySelector('.box');
+        const list = box.querySelectorAll('ul>li');
+        const but = box.querySelectorAll('span');
+        but.forEach((e) => {e.onclick = () => main(false, e == but[1])})
+        list.forEach((e,i) => {e.onclick = () => main(true, i)})
+        function main(w,r){
+            w ? index = r : index += r ? 1 : -1;
+            index = index > list.length - 1 ? 0 : index < 0 ? list.length - 1 : index;
+            box.style.background = arrbg[index]
+            box.querySelector('.bg').classList.remove('bg')
+            list[index].classList.add('bg')
+        }
+        setInterval(() => main(false,true), 1000)
+    </script>
+</body>
+</html>
